@@ -1,6 +1,6 @@
 # Ejel Chat Demo for Vanilla JS
 
-이 프로젝트는 `ejel-chat-js` 라이브러리를 사용한 기본적인 바닐라 자바스크립트 데모입니다.
+이 프로젝트는 `ejel-chat-js` 라이브러리를 사용한 기본적인 Vanilla Javascript 데모입니다.
 
 ![demo](./public/screenshot-demo.png)
 
@@ -29,7 +29,7 @@
 
 ```bash
 git clone https://github.com/VMONSTER-AI/ejel-chat-js-vanilla-demo.git
-cd vanilla-demo
+cd ejel-chat-js-vanilla-demo
 ```
 
 2. 의존성 설치
