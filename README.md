@@ -48,7 +48,7 @@ VITE_AGENT_ID=YOUR_AGENT_ID  // Ejel Agent ID
 VITE_SERVER_URL=YOUR_SERVER_URL  // 기본적으로 http://api.ejelai.com 를 사용하세요.
 ```
 
-1. 애플리케이션을 시작합니다:
+4. 애플리케이션 시작
 
 ```bash
 npm run dev
