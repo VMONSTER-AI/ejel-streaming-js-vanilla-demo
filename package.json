@@ -12,6 +12,6 @@
     "vite": "^5.4.10"
   },
   "dependencies": {
-    "ejel-chat-js": "^0.0.13"
+    "ejel-chat-js": "^0.0.14"
   }
 }

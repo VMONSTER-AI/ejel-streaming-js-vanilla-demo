@@ -34,7 +34,7 @@ function updateSpeakingStatus(isAgentSpeaking) {
 }
 
 function setupEventListeners() {
-  room.on("started", () => {
+  room.on("joined", () => {
     updateJoinStatus(true);
     updateSpeakingStatus(false);
   });
@@ -51,7 +51,7 @@ function setupEventListeners() {
     updateSpeakingStatus(false);
   });
 
-  room.on("closed", () => {
+  room.on("left", () => {
     logClient("connection closed");
     updateJoinStatus(false);
     updateSpeakingStatus(false);
