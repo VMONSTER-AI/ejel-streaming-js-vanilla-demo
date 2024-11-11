@@ -83,6 +83,15 @@ document.getElementById("chatBtn").addEventListener("click", async () => {
     console.error(error);
   }
 });
+document.getElementById("speakBtn").addEventListener("click", async () => {
+  const text = document.getElementById("chatInput").value;
+  try {
+    await room.speak(text);
+    document.getElementById("chatInput").value = "";
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 document.getElementById("leaveBtn").addEventListener("click", () => {
   room.leave();
