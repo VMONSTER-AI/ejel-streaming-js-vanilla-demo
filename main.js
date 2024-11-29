@@ -103,26 +103,12 @@ document.getElementById("startRecordBtn").addEventListener("click", () => {
 document.getElementById("stopRecordBtn").addEventListener("click", async () => {
   try {
     const blob = await room.stopRecordingAudio();
-    const text = await room.stt(blob, "ko");
-    sttResult = text;
-    if (sttResult.trim() !== "") {
-      document.getElementById("sttText").textContent = text;
+    const sttResult = await room.stt(blob, "ko");
+    if (sttResult) {
+      document.getElementById("sttText").textContent = sttResult;
       document.getElementById("sttResult").style.display = "block";
     }
   } catch (error) {
     console.error(error);
   }
 });
-
-document
-  .getElementById("sendSpeakWithSttResultBtn")
-  .addEventListener("click", async () => {
-    logClient(sttResult);
-    try {
-      await room.speak(sttResult);
-      document.getElementById("sttResult").style.display = "none";
-      sttResult = "";
-    } catch (error) {
-      console.error("[Client] - " + error);
-    }
-  });
