@@ -1,4 +1,4 @@
-import Room from "ejel-chat-js";
+import Room from "ejel-streaming-js";
 
 const room = new Room({
   // Please set agentId, apiKey, and serverUrl values in the .env file
@@ -55,7 +55,7 @@ function setupEventListeners() {
     logClient("connection closed");
     updateJoinStatus(false);
     updateSpeakingStatus(false);
-    document.getElementById("chatInput").value = "";
+    document.getElementById("textInput").value = "";
     document.getElementById("sttResult").style.display = "none";
     sttResult = "";
   });
@@ -74,20 +74,11 @@ document.getElementById("joinBtn").addEventListener("click", async () => {
   }
 });
 
-document.getElementById("chatBtn").addEventListener("click", async () => {
-  const text = document.getElementById("chatInput").value;
-  try {
-    await room.chat(text);
-    document.getElementById("chatInput").value = "";
-  } catch (error) {
-    console.error(error);
-  }
-});
 document.getElementById("speakBtn").addEventListener("click", async () => {
-  const text = document.getElementById("chatInput").value;
+  const text = document.getElementById("textInput").value;
   try {
     await room.speak(text);
-    document.getElementById("chatInput").value = "";
+    document.getElementById("textInput").value = "";
   } catch (error) {
     console.error(error);
   }
@@ -124,11 +115,11 @@ document.getElementById("stopRecordBtn").addEventListener("click", async () => {
 });
 
 document
-  .getElementById("sendChatWithSttResultBtn")
+  .getElementById("sendSpeakWithSttResultBtn")
   .addEventListener("click", async () => {
     logClient(sttResult);
     try {
-      await room.chat(sttResult);
+      await room.speak(sttResult);
       document.getElementById("sttResult").style.display = "none";
       sttResult = "";
     } catch (error) {

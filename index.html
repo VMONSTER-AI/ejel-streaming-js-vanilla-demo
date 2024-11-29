@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ejel Chat Vanilla JS Demo</title>
+    <title>Ejel Streaming Vanilla JS Demo</title>
     <style>
       :root {
         --primary-color: #5d67d6;
@@ -87,8 +87,7 @@
     <button id="joinBtn">Join</button>
     <button id="leaveBtn">Leave</button>
     <br />
-    <input type="text" id="chatInput" />
-    <button id="chatBtn">Chat</button>
+    <input type="text" id="textInput" />
     <button id="speakBtn">Speak</button>
     <br />
     <button id="addVideoBtn">Add Video</button>
@@ -99,7 +98,7 @@
     <div id="sttResult" style="display: none">
       <b>STT Result: </b>
       <span id="sttText"></span>
-      <button id="sendChatWithSttResultBtn">Send Chat with STT result</button>
+      <button id="sendSpeakWithSttResultBtn">Send Speak with STT result</button>
     </div>
     <hr />
     <div class="status">

@@ -1,6 +1,6 @@
-# Ejel Chat Demo for Vanilla JS
+# Ejel Streaming Demo for Vanilla JS
 
-이 프로젝트는 `ejel-chat-js` 라이브러리를 사용한 기본적인 Vanilla Javascript 데모입니다.
+이 프로젝트는 `ejel-streaming-js` 라이브러리를 사용한 기본적인 Vanilla Javascript 데모입니다.
 
 ![demo](./public/screenshot-demo.png)
 
@@ -8,7 +8,7 @@
 
 이 데모에서는 [Room](https://docs.ejelai.com/room)을 사용하여 다음과 같은 기능을 구현합니다.
 
-- Ejel Chat stream 참여/종료
+- Ejel Streaming stream 참여/종료
 - 에이전트와 텍스트 채팅으로 대화
 - 에이전트 비디오 추가/제거
 - 음성 녹음
@@ -28,8 +28,8 @@
 1. 저장소를 클론합니다
 
 ```bash
-git clone https://github.com/VMONSTER-AI/ejel-chat-js-vanilla-demo.git
-cd ejel-chat-js-vanilla-demo
+git clone https://github.com/VMONSTER-AI/ejel-streaming-js-vanilla-demo.git
+cd ejel-streaming-js-vanilla-demo
 ```
 
 2. 의존성 설치

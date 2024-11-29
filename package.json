@@ -1,5 +1,5 @@
 {
-  "name": "js-demo",
+  "name": "ejel-streaming-js-vanilla-demo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,6 +12,6 @@
     "vite": "^5.4.10"
   },
   "dependencies": {
-    "ejel-chat-js": "^0.0.17"
+    "ejel-streaming-js": "^0.0.3"
   }
 }
