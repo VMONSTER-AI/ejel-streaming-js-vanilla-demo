@@ -34,9 +34,15 @@ function updateSpeakingStatus(isAgentSpeaking) {
 }
 
 function setupEventListeners() {
+  room.on("joining", () => {
+    logClient("joining...");
+  });
   room.on("joined", () => {
     updateJoinStatus(true);
     updateSpeakingStatus(false);
+  });
+  room.on("join-timeout", () => {
+    logClient("join-timeout");
   });
 
   room.on("agent-message", (msg) => {
