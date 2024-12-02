@@ -89,6 +89,15 @@ document.getElementById("speakBtn").addEventListener("click", async () => {
     console.error(error);
   }
 });
+document
+  .getElementById("stopSpeakingBtn")
+  .addEventListener("click", async () => {
+    try {
+      await room.stopSpeaking();
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
 document.getElementById("leaveBtn").addEventListener("click", () => {
   room.leave();
