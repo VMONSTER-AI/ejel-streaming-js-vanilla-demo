@@ -119,11 +119,18 @@ document.getElementById("stopRecordBtn").addEventListener("click", async () => {
   try {
     const blob = await room.stopRecordingAudio();
     const sttResult = await room.stt(blob, "ko");
-    if (sttResult) {
-      document.getElementById("sttText").textContent = sttResult;
-      document.getElementById("sttResult").style.display = "block";
-    }
+
+    document.getElementById("sttText").textContent = sttResult;
+    document.getElementById("sttResult").style.display = "block";
   } catch (error) {
     console.error(error);
   }
+});
+
+document.getElementById("logAgentStateBtn").addEventListener("click", () => {
+  logClient(room.agentState());
+});
+
+document.getElementById("logRoomStateBtn").addEventListener("click", () => {
+  logClient(room.roomState());
 });

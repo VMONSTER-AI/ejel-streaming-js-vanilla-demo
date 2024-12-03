@@ -10,11 +10,10 @@ This demo implements the following features using [Room](https://docs.ejelai.com
 
 - Join/Leave Ejel Streaming stream
 - Request agent to speak text
+- Stop agent speaking
 - Add/Remove agent video
 - Voice recording
 - STT (Speech-to-Text)
-
-For more details on each feature, please refer to the [Documentation](https://docs.ejelai.com).
 
 ## Getting Started
 
