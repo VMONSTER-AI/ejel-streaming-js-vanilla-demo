@@ -19,7 +19,7 @@ This demo implements the following features using [Room](https://docs.ejelai.com
 
 ### Prerequisites
 
-- Ejel API Key (https://ejelai.com/api-key)
+- Your Ejel API Key (https://ejelai.com/api-key)
 - npm or yarn
 
 ### Installation
@@ -42,9 +42,9 @@ yarn install
 #### 3. Set environment variables
 
 ```bash
-VITE_API_KEY=YOUR_API_KEY  // Ejel API Key
-VITE_AGENT_ID=YOUR_AGENT_ID  // Ejel Agent ID
-VITE_SERVER_URL=YOUR_SERVER_URL  // Use http://api.ejelai.com/v1 by default.
+VITE_API_KEY=YOUR_API_KEY  // Your Ejel API Key
+VITE_AGENT_ID=AGENT_ID  // Ejel Agent ID
+VITE_SERVER_URL=SERVER_URL  // Use http://api.ejelai.com/v1 by default.
 ```
 
 #### 4. Start the application
