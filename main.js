@@ -5,6 +5,7 @@ const room = new Room({
   agentId: import.meta.env.VITE_AGENT_ID,
   apiKey: import.meta.env.VITE_API_KEY,
   serverUrl: import.meta.env.VITE_SERVER_URL,
+  bitrate: 1000,
 });
 
 let sttResult = "";
