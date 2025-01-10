@@ -107,7 +107,6 @@ document
 
 document.getElementById("leaveBtn").addEventListener("click", () => {
   room.leave();
-  document.getElementById("settings").style.display = "block";
 });
 
 document.getElementById("addVideoBtn").addEventListener("click", () => {
