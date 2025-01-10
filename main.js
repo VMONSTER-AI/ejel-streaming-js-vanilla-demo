@@ -60,7 +60,6 @@ function setupEventListeners() {
     updateJoinStatus(false);
     updateSpeakingStatus(false);
     document.getElementById("textInput").value = "";
-    document.getElementById("sttResult").style.display = "none";
     sttResult = "";
   });
 }
@@ -71,10 +70,6 @@ document.getElementById("joinBtn").addEventListener("click", async () => {
     agentId: import.meta.env.VITE_AGENT_ID,
     apiKey: import.meta.env.VITE_API_KEY,
     serverUrl: import.meta.env.VITE_SERVER_URL,
-    background: background,
-    position_x: positionXInput || null,
-    position_y: positionYInput || null,
-    scale: scaleInput || null,
   });
 
   setupEventListeners();
