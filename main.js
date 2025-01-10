@@ -1,13 +1,6 @@
-import Room from "ejel-streaming-js";
+import ejelRoom from "ejel-streaming-js";
 
-const room = new Room({
-  // Please set agentId, apiKey, and serverUrl values in the .env file
-  agentId: import.meta.env.VITE_AGENT_ID,
-  apiKey: import.meta.env.VITE_API_KEY,
-  serverUrl: import.meta.env.VITE_SERVER_URL,
-  bitrate: 1000,
-});
-
+let room = null;
 let sttResult = "";
 
 const videoStyle = {
@@ -73,6 +66,17 @@ function setupEventListeners() {
 }
 
 document.getElementById("joinBtn").addEventListener("click", async () => {
+  room = new ejelRoom({
+    // Please set agentId, apiKey, and serverUrl values in the .env file
+    agentId: import.meta.env.VITE_AGENT_ID,
+    apiKey: import.meta.env.VITE_API_KEY,
+    serverUrl: import.meta.env.VITE_SERVER_URL,
+    background: background,
+    position_x: positionXInput || null,
+    position_y: positionYInput || null,
+    scale: scaleInput || null,
+  });
+
   setupEventListeners();
   try {
     await room.join();
@@ -103,6 +107,7 @@ document
 
 document.getElementById("leaveBtn").addEventListener("click", () => {
   room.leave();
+  document.getElementById("settings").style.display = "block";
 });
 
 document.getElementById("addVideoBtn").addEventListener("click", () => {
@@ -111,22 +116,6 @@ document.getElementById("addVideoBtn").addEventListener("click", () => {
 
 document.getElementById("removeVideoBtn").addEventListener("click", () => {
   room.removeVideo();
-});
-
-document.getElementById("startRecordBtn").addEventListener("click", () => {
-  room.startRecordingAudio();
-});
-
-document.getElementById("stopRecordBtn").addEventListener("click", async () => {
-  try {
-    const blob = await room.stopRecordingAudio();
-    const sttResult = await room.stt(blob, "ko");
-
-    document.getElementById("sttText").textContent = sttResult;
-    document.getElementById("sttResult").style.display = "block";
-  } catch (error) {
-    console.error(error);
-  }
 });
 
 document.getElementById("logAgentStateBtn").addEventListener("click", () => {
