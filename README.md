@@ -12,8 +12,6 @@ This demo implements the following features using [Room](https://docs.ejelai.com
 - Request agent to speak text
 - Stop agent speaking
 - Add/Remove agent video
-- Voice recording
-- STT (Speech-to-Text)
 
 ## Getting Started
 
