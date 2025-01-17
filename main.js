@@ -65,16 +65,51 @@ function setupEventListeners() {
 }
 
 document.getElementById("joinBtn").addEventListener("click", async () => {
+  const backgroundInput = document.getElementById("backgroundInput");
+  const positionXInput = document.getElementById("positionXInput").value;
+  const positionYInput = document.getElementById("positionYInput").value;
+  const scaleInput = document.getElementById("scaleInput").value;
+
+  let background = null;
+
+  // Handle file input
+  if (backgroundInput.files.length > 0) {
+    const file = backgroundInput.files[0];
+    const useAsBlob = confirm("Treat as Blob? Cancel for File.");
+
+    if (useAsBlob) {
+      const newBlob = new Blob([file], { type: file.type });
+      console.log(`New Blob size: ${newBlob.size}`);
+      console.log(`New Blob type: ${newBlob.type}`);
+      background = newBlob;
+    } else {
+      // Use the file directly
+      console.log(`File name: ${file.name}`);
+      console.log(`File type: ${file.type}`);
+      console.log(`File size: ${file.size}`);
+      background = file;
+    }
+  }
+
   room = new ejelRoom({
     // Please set agentId, apiKey, and serverUrl values in the .env file
     agentId: import.meta.env.VITE_AGENT_ID,
     apiKey: import.meta.env.VITE_API_KEY,
     serverUrl: import.meta.env.VITE_SERVER_URL,
+    background: background || null,
+    positionX: positionXInput || null,
+    positionY: positionYInput || null,
+    scale: scaleInput || null,
   });
 
   setupEventListeners();
   try {
     await room.join();
+    document.getElementById("settings").style.display = "none";
+    document.getElementById("backgroundInput").value = null;
+    document.getElementById("positionXInput").value = null;
+    document.getElementById("positionYInput").value = null;
+    document.getElementById("scaleInput").value = null;
   } catch (error) {
     logClient("join error..");
     console.error(error);
@@ -102,6 +137,7 @@ document
 
 document.getElementById("leaveBtn").addEventListener("click", () => {
   room.leave();
+  document.getElementById("settings").style.display = "block";
 });
 
 document.getElementById("addVideoBtn").addEventListener("click", () => {
