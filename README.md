@@ -2,16 +2,20 @@
 
 This project is a basic Vanilla Javascript demo using the `ejel-streaming-js` library.
 
+![initialize-demo](./public/screenshot-initialize-demo.png)
 ![demo](./public/screenshot-demo.png)
 
 ## Features
 
-This demo implements the following features using [Room](https://docs.ejelai.com/room):
+This demo implements the following features using ejelRoom:
+[ejelRoom-KOR](https://docs.ejelai.com/undefined/real-time-streaming-sdk/ejelroom)
+[ejelRoom-ENG](https://docs.ejelai.com/english/real-time-streaming-sdk/ejelroom)
 
 - Join/Leave Ejel Streaming stream
 - Request agent to speak text
 - Stop agent speaking
 - Add/Remove agent video
+- Set background / position / scale
 
 ## Getting Started
 
