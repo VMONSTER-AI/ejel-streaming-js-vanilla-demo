@@ -31,7 +31,6 @@ function setupEventListeners() {
     logClient("joining...");
   });
   room.on("joined", () => {
-    // add video with a specific style when joined
     room.addVideo(videoStyle);
 
     updateJoinStatus(true);
@@ -100,7 +99,6 @@ document.getElementById("joinBtn").addEventListener("click", async () => {
   setupEventListeners();
   try {
     await room.join();
-    // document.getElementById("settings").style.display = "none";
     document.getElementById("backgroundInput").value = null;
     document.getElementById("positionXInput").value = null;
     document.getElementById("positionYInput").value = null;
@@ -166,7 +164,6 @@ document
 
 document.getElementById("leaveBtn").addEventListener("click", () => {
   room.leave();
-  // document.getElementById("settings").style.display = "block";
 });
 
 document.getElementById("addVideoBtn").addEventListener("click", () => {
