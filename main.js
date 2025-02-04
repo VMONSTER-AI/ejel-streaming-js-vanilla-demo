@@ -1,7 +1,6 @@
 import ejelRoom from "ejel-streaming-js";
 
 let room = null;
-let sttResult = "";
 
 const videoStyle = {
   borderRadius: "20px",
@@ -32,7 +31,6 @@ function setupEventListeners() {
     logClient("joining...");
   });
   room.on("joined", () => {
-    // add video with a specific style when joined
     room.addVideo(videoStyle);
 
     updateJoinStatus(true);
@@ -60,7 +58,6 @@ function setupEventListeners() {
     updateJoinStatus(false);
     updateSpeakingStatus(false);
     document.getElementById("textInput").value = "";
-    sttResult = "";
   });
 }
 
@@ -71,8 +68,6 @@ document.getElementById("joinBtn").addEventListener("click", async () => {
   const scaleInput = document.getElementById("scaleInput").value;
 
   let background = null;
-
-  // Handle file input
   if (backgroundInput.files.length > 0) {
     const file = backgroundInput.files[0];
     const useAsBlob = confirm("Treat as Blob? Cancel for File.");
@@ -83,7 +78,6 @@ document.getElementById("joinBtn").addEventListener("click", async () => {
       console.log(`New Blob type: ${newBlob.type}`);
       background = newBlob;
     } else {
-      // Use the file directly
       console.log(`File name: ${file.name}`);
       console.log(`File type: ${file.type}`);
       console.log(`File size: ${file.size}`);
@@ -105,7 +99,6 @@ document.getElementById("joinBtn").addEventListener("click", async () => {
   setupEventListeners();
   try {
     await room.join();
-    document.getElementById("settings").style.display = "none";
     document.getElementById("backgroundInput").value = null;
     document.getElementById("positionXInput").value = null;
     document.getElementById("positionYInput").value = null;
@@ -118,9 +111,43 @@ document.getElementById("joinBtn").addEventListener("click", async () => {
 
 document.getElementById("speakBtn").addEventListener("click", async () => {
   const text = document.getElementById("textInput").value;
+  const backgroundInput = document.getElementById("backgroundInput");
+  const positionXInput = document.getElementById("positionXInput").value;
+  const positionYInput = document.getElementById("positionYInput").value;
+  const scaleInput = document.getElementById("scaleInput").value;
+
+  let background = null;
+  if (backgroundInput.files.length > 0) {
+    const file = backgroundInput.files[0];
+    const useAsBlob = confirm("Treat as Blob? Cancel for File.");
+
+    if (useAsBlob) {
+      const newBlob = new Blob([file], { type: file.type });
+      console.log(`New Blob size: ${newBlob.size}`);
+      console.log(`New Blob type: ${newBlob.type}`);
+      background = newBlob;
+    } else {
+      // Use the file directly
+      console.log(`File name: ${file.name}`);
+      console.log(`File type: ${file.type}`);
+      console.log(`File size: ${file.size}`);
+      background = file;
+    }
+  }
+
   try {
-    await room.speak(text);
+    await room.speak({
+      text: text,
+      background: background || null,
+      positionX: positionXInput || null,
+      positionY: positionYInput || null,
+      scale: scaleInput || null,
+    });
     document.getElementById("textInput").value = "";
+    document.getElementById("backgroundInput").value = null;
+    document.getElementById("positionXInput").value = null;
+    document.getElementById("positionYInput").value = null;
+    document.getElementById("scaleInput").value = null;
   } catch (error) {
     console.error(error);
   }
@@ -137,7 +164,6 @@ document
 
 document.getElementById("leaveBtn").addEventListener("click", () => {
   room.leave();
-  document.getElementById("settings").style.display = "block";
 });
 
 document.getElementById("addVideoBtn").addEventListener("click", () => {
