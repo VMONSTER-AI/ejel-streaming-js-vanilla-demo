@@ -8,8 +8,8 @@ This project is a basic Vanilla Javascript demo using the `ejel-streaming-js` li
 ## Features
 
 This demo implements the following features using ejelRoom:
-[ejelRoom-KOR](https://docs.ejelai.com/undefined/real-time-streaming-sdk/ejelroom)
-[ejelRoom-ENG](https://docs.ejelai.com/english/real-time-streaming-sdk/ejelroom)
+[ejelRoom-KOR](https://docs.vmonster.io/undefined/real-time-streaming-sdk/ejelroom)
+[ejelRoom-ENG](https://docs.vmonster.io/english/real-time-streaming-sdk/ejelroom)
 
 - Join/Leave Ejel Streaming stream
 - Request agent to speak text
@@ -21,7 +21,7 @@ This demo implements the following features using ejelRoom:
 
 ### Prerequisites
 
-- Your Ejel API Key (https://ejelai.com/api-key)
+- Your Ejel API Key (https://app.vmonster.io/api-key)
 - npm or yarn
 
 ### Installation
@@ -46,7 +46,7 @@ yarn install
 ```bash
 VITE_API_KEY=YOUR_API_KEY  // Your Ejel API Key
 VITE_AGENT_ID=AGENT_ID  // Ejel Agent ID
-VITE_SERVER_URL=SERVER_URL  // Use http://api.ejelai.com/v1 by default.
+VITE_SERVER_URL=SERVER_URL  // Use http://api.vmonster.io/v1 by default.
 ```
 
 #### 4. Start the application

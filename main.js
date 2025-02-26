@@ -62,6 +62,7 @@ function setupEventListeners() {
 }
 
 document.getElementById("joinBtn").addEventListener("click", async () => {
+  const languageInput = document.getElementById("languageInput").value;
   const backgroundInput = document.getElementById("backgroundInput");
   const positionXInput = document.getElementById("positionXInput").value;
   const positionYInput = document.getElementById("positionYInput").value;
@@ -74,13 +75,8 @@ document.getElementById("joinBtn").addEventListener("click", async () => {
 
     if (useAsBlob) {
       const newBlob = new Blob([file], { type: file.type });
-      console.log(`New Blob size: ${newBlob.size}`);
-      console.log(`New Blob type: ${newBlob.type}`);
       background = newBlob;
     } else {
-      console.log(`File name: ${file.name}`);
-      console.log(`File type: ${file.type}`);
-      console.log(`File size: ${file.size}`);
       background = file;
     }
   }
@@ -90,6 +86,7 @@ document.getElementById("joinBtn").addEventListener("click", async () => {
     agentId: import.meta.env.VITE_AGENT_ID,
     apiKey: import.meta.env.VITE_API_KEY,
     serverUrl: import.meta.env.VITE_SERVER_URL,
+    language: languageInput,
     background: background || null,
     positionX: positionXInput || null,
     positionY: positionYInput || null,
@@ -103,6 +100,7 @@ document.getElementById("joinBtn").addEventListener("click", async () => {
     document.getElementById("positionXInput").value = null;
     document.getElementById("positionYInput").value = null;
     document.getElementById("scaleInput").value = null;
+    document.getElementById("languageDiv").style.display = "none";
   } catch (error) {
     logClient("join error..");
     console.error(error);
@@ -123,14 +121,8 @@ document.getElementById("speakBtn").addEventListener("click", async () => {
 
     if (useAsBlob) {
       const newBlob = new Blob([file], { type: file.type });
-      console.log(`New Blob size: ${newBlob.size}`);
-      console.log(`New Blob type: ${newBlob.type}`);
       background = newBlob;
     } else {
-      // Use the file directly
-      console.log(`File name: ${file.name}`);
-      console.log(`File type: ${file.type}`);
-      console.log(`File size: ${file.size}`);
       background = file;
     }
   }
@@ -164,6 +156,7 @@ document
 
 document.getElementById("leaveBtn").addEventListener("click", () => {
   room.leave();
+  document.getElementById("languageDiv").style.display = "block";
 });
 
 document.getElementById("addVideoBtn").addEventListener("click", () => {

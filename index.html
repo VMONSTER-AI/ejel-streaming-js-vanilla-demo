@@ -78,20 +78,29 @@
     <hr />
     <!-- Settings section with appropriate labels -->
     <div id="settings">
+      <div id="languageDiv">
+        <label for="languageInput">Language </label>
+        <select id="languageInput">
+          <option value="ko">ko</option>
+          <option value="en">en</option>
+          <option value="ja">ja</option>
+          <option value="zh">zh</option>
+        </select>
+      </div>
       <div>
-        <label for="backgroundInput">Background Image (png/jpg/jpeg):</label>
+        <label for="backgroundInput">Background Image (png/jpg/jpeg)</label>
         <input type="file" id="backgroundInput" accept=".png, .jpg, .jpeg" />
       </div>
       <div>
-        <label for="positionXInput">Position X:</label>
+        <label for="positionXInput">Position X</label>
         <input type="number" id="positionXInput" placeholder="Position X" />
       </div>
       <div>
-        <label for="positionYInput">Position Y:</label>
+        <label for="positionYInput">Position Y</label>
         <input type="number" id="positionYInput" placeholder="Position Y" />
       </div>
       <div>
-        <label for="scaleInput">Scale:</label>
+        <label for="scaleInput">Scale</label>
         <input type="number" id="scaleInput" placeholder="Scale" />
       </div>
     </div>
