@@ -12,6 +12,6 @@
     "vite": "^5.4.10"
   },
   "dependencies": {
-    "ejel-streaming-js": "^1.3.0"
+    "ejel-streaming-js": "^1.4.0"
   }
 }
