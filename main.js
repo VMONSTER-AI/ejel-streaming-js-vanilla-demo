@@ -1,6 +1,7 @@
 import ejelRoom from "ejel-streaming-js";
 
 let room = null;
+let sttResult = "";
 
 const videoStyle = {
   borderRadius: "20px",
@@ -58,6 +59,8 @@ function setupEventListeners() {
     updateJoinStatus(false);
     updateSpeakingStatus(false);
     document.getElementById("textInput").value = "";
+    document.getElementById("sttResult").style.display = "none";
+    sttResult = "";
   });
 }
 
@@ -173,4 +176,22 @@ document.getElementById("logAgentStateBtn").addEventListener("click", () => {
 
 document.getElementById("logRoomStateBtn").addEventListener("click", () => {
   logClient(room.roomState());
+});
+
+document.getElementById("startRecordBtn").addEventListener("click", () => {
+  room.startRecordingAudio();
+});
+
+document.getElementById("stopRecordBtn").addEventListener("click", async () => {
+  try {
+    const blob = await room.stopRecordingAudio();
+    const text = await room.stt(blob, "ko");
+    sttResult = text;
+    if (sttResult.trim() !== "") {
+      document.getElementById("sttText").textContent = text;
+      document.getElementById("sttResult").style.display = "block";
+    }
+  } catch (error) {
+    console.error(error);
+  }
 });

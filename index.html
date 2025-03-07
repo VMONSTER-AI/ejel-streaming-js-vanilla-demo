@@ -69,6 +69,20 @@
       #logRoomStateBtn {
         background-color: #959595;
       }
+
+      #sttResult {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      #sttText {
+        display: block;
+        margin: 0.5rem 0;
+        color: #4b5563;
+      }
     </style>
   </head>
   <body>
@@ -114,6 +128,12 @@
     <button id="addVideoBtn">Add Video</button>
     <button id="removeVideoBtn">Remove Video</button>
     <br />
+    <button id="startRecordBtn">Start Recording</button>
+    <button id="stopRecordBtn">Stop Recording</button>
+    <div id="sttResult" style="display: none">
+      <b>STT Result: </b>
+      <span id="sttText"></span>
+    </div>
     <hr />
 
     <button id="logAgentStateBtn">log agentState</button>
